@@ -1,0 +1,3921 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Vishnu Tiwari — student, builder and technology explorer interested in software, AI, robotics and mathematics.">
+
+    <title>Vishnu Tiwari — Building in Public</title>
+
+    <style>
+        /* =========================================================
+   VISHNU TIWARI — PERSONAL PORTFOLIO
+========================================================= */
+
+        @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+
+        /* =========================
+   VARIABLES
+========================= */
+
+        :root {
+            --paper: #f4f0e8;
+            --paper-2: #ebe5da;
+            --ink: #1d211e;
+            --muted: #6d716b;
+            --line: #d5cec1;
+            --card: #faf8f3;
+
+            --accent: #d65a3a;
+            --accent-dark: #a83e28;
+
+            --green: #315c4c;
+
+            --shadow: 0 18px 50px rgba(38, 32, 25, .10);
+
+            --radius: 18px;
+            --max: 1120px;
+        }
+
+
+        /* =========================
+   RESET
+========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+
+            font-family: "Manrope", sans-serif;
+
+            line-height: 1.65;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+   TEXTURE
+========================= */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 9999;
+
+            opacity: .055;
+
+            background-image:
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+        }
+
+
+        ::selection {
+            background: var(--accent);
+            color: white;
+        }
+
+
+        /* =========================
+   SCROLLBAR
+========================= */
+
+        ::-webkit-scrollbar {
+            width: 9px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--paper);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #b9b0a2;
+            border-radius: 20px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+
+        /* =========================
+   GLOBAL
+========================= */
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        .container {
+
+            width: min(var(--max),
+                    calc(100% - 44px));
+
+            margin: auto;
+        }
+
+        .section {
+
+            padding: 110px 0;
+
+            border-top: 1px solid var(--line);
+        }
+
+
+        .eyebrow {
+
+            font-family: "DM Mono", monospace;
+
+            text-transform: uppercase;
+
+            letter-spacing: .12em;
+
+            font-size: .74rem;
+
+            color: var(--accent-dark);
+
+            margin-bottom: 14px;
+        }
+
+
+        .section-title {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(2.4rem, 5vw, 4.4rem);
+
+            line-height: 1.05;
+
+            letter-spacing: -.035em;
+
+            margin-bottom: 42px;
+        }
+
+
+        .section-title em {
+
+            color: var(--accent);
+
+            font-style: normal;
+        }
+
+
+        /* =========================
+   SCROLL PROGRESS
+========================= */
+
+        .progress-line {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            height: 3px;
+
+            width: 0;
+
+            background: var(--accent);
+
+            z-index: 2000;
+        }
+
+
+        /* =========================
+   NAVBAR
+========================= */
+
+        nav {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background: rgba(244, 240, 232, .86);
+
+            backdrop-filter: blur(16px);
+
+            border-bottom:
+                1px solid rgba(213, 206, 193, .8);
+        }
+
+
+        .nav-inner {
+
+            min-height: 72px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        .logo {
+
+            font-family: "DM Mono", monospace;
+
+            font-weight: 500;
+
+            letter-spacing: -.04em;
+        }
+
+
+        .logo span {
+            color: var(--accent);
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 26px;
+
+            list-style: none;
+        }
+
+
+        .nav-links a {
+
+            color: var(--muted);
+
+            font-size: .88rem;
+
+            position: relative;
+
+            transition: .25s ease;
+        }
+
+
+        .nav-links a::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -7px;
+
+            width: 0;
+
+            height: 2px;
+
+            background: var(--accent);
+
+            transition: .25s ease;
+        }
+
+
+        .nav-links a:hover,
+        .nav-links a.active {
+
+            color: var(--ink);
+        }
+
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+
+            width: 100%;
+        }
+
+
+        .menu {
+
+            display: none;
+
+            border: 0;
+
+            background: transparent;
+
+            cursor: pointer;
+
+            font-size: 1.4rem;
+        }
+
+
+        /* =========================
+   HERO
+========================= */
+
+        .hero {
+
+            min-height: calc(100vh - 72px);
+
+            display: grid;
+
+            grid-template-columns: 1.35fr .65fr;
+
+            align-items: center;
+
+            gap: 70px;
+
+            padding: 80px 0 100px;
+        }
+
+
+        .hero-copy {
+            position: relative;
+        }
+
+
+        .hero-kicker {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            font-family: "DM Mono", monospace;
+
+            color: var(--green);
+
+            font-size: .8rem;
+
+            margin-bottom: 24px;
+        }
+
+
+        .status-dot {
+
+            width: 8px;
+
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: #5e9b62;
+
+            box-shadow:
+                0 0 0 5px rgba(94, 155, 98, .12);
+
+            animation: pulse 2s infinite;
+        }
+
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+
+                box-shadow:
+                    0 0 0 4px rgba(94, 155, 98, .12);
+            }
+
+            50% {
+
+                box-shadow:
+                    0 0 0 9px rgba(94, 155, 98, .02);
+            }
+        }
+
+
+        .hero h1 {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(4.2rem, 9vw, 8.3rem);
+
+            line-height: .88;
+
+            letter-spacing: -.065em;
+
+            margin-bottom: 30px;
+        }
+
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+
+        .hero-lead {
+
+            max-width: 680px;
+
+            color: #555a54;
+
+            font-size: 1.13rem;
+
+            margin-bottom: 32px;
+        }
+
+
+        .hero-actions {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+
+        .btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 9px;
+
+            border-radius: 999px;
+
+            padding: 12px 19px;
+
+            font-weight: 700;
+
+            font-size: .9rem;
+
+            border: 1px solid transparent;
+
+            cursor: pointer;
+
+            transition:
+                transform .25s ease,
+                background .25s ease,
+                color .25s ease,
+                border .25s ease;
+        }
+
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+
+        .btn-primary {
+
+            background: var(--ink);
+
+            color: white;
+        }
+
+
+        .btn-primary:hover {
+            background: var(--accent);
+        }
+
+
+        .btn-ghost {
+
+            border-color: var(--line);
+
+            color: var(--ink);
+
+            background: rgba(255, 255, 255, .25);
+        }
+
+
+        .btn-ghost:hover {
+
+            border-color: var(--accent);
+
+            color: var(--accent-dark);
+        }
+
+
+        .social-row {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 25px;
+        }
+
+
+        .social-row a {
+
+            font-family: "DM Mono", monospace;
+
+            font-size: .76rem;
+
+            color: var(--muted);
+
+            border-bottom: 1px solid var(--line);
+
+            padding-bottom: 2px;
+
+            transition: .2s;
+        }
+
+
+        .social-row a:hover {
+
+            color: var(--accent-dark);
+
+            border-color: var(--accent);
+        }
+
+
+        /* =========================
+   PROFILE IMAGE
+========================= */
+
+        .hero-photo-wrap {
+
+            justify-self: end;
+
+            position: relative;
+
+            width: min(360px, 100%);
+        }
+
+
+        .hero-photo-wrap::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 100%;
+
+            height: 100%;
+
+            border: 1px solid var(--accent);
+
+            border-radius: 52% 48% 45% 55%;
+
+            transform:
+                rotate(7deg) translate(10px, 10px);
+
+            transition: .5s ease;
+        }
+
+
+        .hero-photo-wrap:hover::before {
+
+            transform:
+                rotate(-4deg) translate(14px, 14px);
+        }
+
+
+        .photo-frame {
+
+            position: relative;
+
+            aspect-ratio: 4/5;
+
+            overflow: hidden;
+
+            border-radius:
+                48% 52% 50% 46%;
+
+            background: var(--paper-2);
+
+            box-shadow: var(--shadow);
+
+            transform: rotate(-2deg);
+        }
+
+
+        .photo-frame img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            filter:
+                saturate(.9) contrast(.98);
+
+            transition:
+                transform .6s ease;
+        }
+
+
+        .photo-frame:hover img {
+
+            transform: scale(1.04);
+        }
+
+
+        .photo-note {
+
+            position: absolute;
+
+            right: -28px;
+
+            bottom: 18px;
+
+            background: var(--green);
+
+            color: white;
+
+            padding: 10px 13px;
+
+            border-radius: 9px;
+
+            font-family: "DM Mono", monospace;
+
+            font-size: .68rem;
+
+            transform: rotate(4deg);
+
+            box-shadow:
+                0 10px 25px rgba(49, 92, 76, .22);
+        }
+
+
+        /* =========================
+   MARQUEE
+========================= */
+
+        .marquee {
+
+            overflow: hidden;
+
+            border-top: 1px solid var(--line);
+
+            border-bottom: 1px solid var(--line);
+
+            padding: 13px 0;
+
+            color: var(--muted);
+
+            font-family: "DM Mono", monospace;
+
+            font-size: .7rem;
+
+            white-space: nowrap;
+        }
+
+
+        .marquee-track {
+
+            display: inline-flex;
+
+            gap: 35px;
+
+            min-width: max-content;
+
+            animation: marquee 25s linear infinite;
+        }
+
+
+        @keyframes marquee {
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+
+        /* =========================
+   ABOUT
+========================= */
+
+        .about-grid {
+
+            display: grid;
+
+            grid-template-columns: 1.15fr .85fr;
+
+            gap: 70px;
+
+            align-items: start;
+        }
+
+
+        .about-copy p {
+
+            color: #5c615b;
+
+            font-size: 1.03rem;
+
+            margin-bottom: 18px;
+        }
+
+
+        .about-copy strong {
+            color: var(--ink);
+        }
+
+
+        .note-card {
+
+            background: var(--card);
+
+            border: 1px solid var(--line);
+
+            border-radius: var(--radius);
+
+            padding: 28px;
+
+            box-shadow:
+                0 12px 35px rgba(38, 32, 25, .06);
+
+            transform: rotate(1deg);
+        }
+
+
+        .note-card h3 {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 1.65rem;
+
+            margin-bottom: 20px;
+        }
+
+
+        .note-list {
+
+            list-style: none;
+
+            display: grid;
+
+            gap: 13px;
+        }
+
+
+        .note-list li {
+
+            display: flex;
+
+            gap: 10px;
+
+            color: #5c615b;
+
+            font-size: .92rem;
+        }
+
+
+        .note-list li span {
+            color: var(--accent);
+        }
+
+
+        /* =========================
+   VISION
+========================= */
+
+        .vision {
+
+            background: var(--ink);
+
+            color: white;
+
+            border-top: 0;
+        }
+
+
+        .vision .eyebrow {
+            color: #eaa08e;
+        }
+
+
+        .vision .section-title {
+            color: white;
+        }
+
+
+        .vision-box {
+
+            max-width: 880px;
+
+            border-left: 2px solid var(--accent);
+
+            padding-left: 28px;
+        }
+
+
+        .vision-box p {
+
+            color: #c6c9c4;
+
+            font-size: 1.08rem;
+        }
+
+
+        .quote {
+
+            margin-top: 32px;
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 1.7rem;
+
+            color: #f3eee5;
+        }
+
+
+        /* =========================
+   INTERESTS
+========================= */
+
+        .interest-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 14px;
+        }
+
+
+        .interest-card {
+
+            background: rgba(255, 255, 255, .35);
+
+            border: 1px solid var(--line);
+
+            border-radius: var(--radius);
+
+            padding: 24px;
+
+            min-height: 190px;
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease,
+                border .3s ease;
+        }
+
+
+        .interest-card:hover {
+
+            transform:
+                translateY(-7px) rotate(.4deg);
+
+            border-color: #c5b9aa;
+
+            box-shadow: var(--shadow);
+        }
+
+
+        .interest-icon {
+
+            font-size: 1.6rem;
+
+            margin-bottom: 20px;
+        }
+
+
+        .interest-card h3 {
+
+            margin-bottom: 7px;
+
+            font-size: 1.05rem;
+        }
+
+
+        .interest-card p {
+
+            color: var(--muted);
+
+            font-size: .88rem;
+        }
+
+
+        /* =========================
+   PROJECTS
+========================= */
+
+        .project-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .project-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            background: var(--card);
+
+            border: 1px solid var(--line);
+
+            border-radius: var(--radius);
+
+            transition:
+                transform .35s ease,
+                box-shadow .35s ease;
+
+            transform-style: preserve-3d;
+        }
+
+
+        .project-card:hover {
+
+            box-shadow: var(--shadow);
+        }
+
+
+        .project-image {
+
+            width: 100%;
+
+            height: 220px;
+
+            object-fit: cover;
+
+            display: block;
+
+            background: var(--paper-2);
+        }
+
+
+        .project-body {
+            padding: 24px;
+        }
+
+
+        .project-body h3 {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 1.5rem;
+
+            margin-bottom: 8px;
+        }
+
+
+        .project-body p {
+
+            color: var(--muted);
+
+            font-size: .9rem;
+
+            margin-bottom: 18px;
+        }
+
+
+        .project-footer {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .tags {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+
+        .tag {
+
+            font-family: "DM Mono", monospace;
+
+            font-size: .65rem;
+
+            color: var(--green);
+
+            background: #e6eee8;
+
+            padding: 5px 8px;
+
+            border-radius: 999px;
+        }
+
+
+        /* =========================
+   SKILLS
+========================= */
+
+        .skills-wrap {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            max-width: 900px;
+        }
+
+
+        .skill {
+
+            border: 1px solid var(--line);
+
+            background: var(--card);
+
+            padding: 9px 14px;
+
+            border-radius: 999px;
+
+            color: #4e544e;
+
+            font-size: .82rem;
+
+            transition: .2s;
+        }
+
+
+        .skill:hover {
+
+            color: white;
+
+            background: var(--green);
+
+            border-color: var(--green);
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+   ROADMAP
+========================= */
+
+        .roadmap {
+
+            max-width: 850px;
+
+            position: relative;
+        }
+
+
+        .roadmap::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 9px;
+
+            top: 5px;
+
+            bottom: 5px;
+
+            width: 1px;
+
+            background: var(--line);
+        }
+
+
+        .roadmap-item {
+
+            position: relative;
+
+            padding:
+                0 0 46px 44px;
+        }
+
+
+        .roadmap-item:last-child {
+            padding-bottom: 0;
+        }
+
+
+        .roadmap-dot {
+
+            position: absolute;
+
+            left: 3px;
+
+            top: 7px;
+
+            width: 13px;
+
+            height: 13px;
+
+            border-radius: 50%;
+
+            background: var(--paper);
+
+            border: 2px solid var(--accent);
+
+            transition: .3s;
+        }
+
+
+        .roadmap-item:hover .roadmap-dot {
+
+            background: var(--accent);
+
+            transform: scale(1.25);
+        }
+
+
+        .roadmap-item h3 {
+
+            margin-bottom: 6px;
+
+            font-size: 1.05rem;
+        }
+
+
+        .roadmap-item p {
+
+            color: var(--muted);
+
+            font-size: .91rem;
+        }
+
+
+        /* =========================
+   GOALS
+========================= */
+
+        .goal-dashboard {
+
+            background: var(--card);
+
+            border: 1px solid var(--line);
+
+            border-radius: var(--radius);
+
+            padding: 30px;
+        }
+
+
+        .progress-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .progress-number {
+
+            font-family: "DM Mono", monospace;
+
+            color: var(--accent-dark);
+        }
+
+
+        .progress-bar {
+
+            height: 9px;
+
+            background: var(--paper-2);
+
+            border-radius: 99px;
+
+            overflow: hidden;
+
+            margin-bottom: 34px;
+        }
+
+
+        #progress-fill {
+
+            height: 100%;
+
+            width: 0;
+
+            background:
+                linear-gradient(90deg,
+                    var(--accent),
+                    #e49a55);
+
+            border-radius: inherit;
+
+            transition:
+                width .6s cubic-bezier(.2, .8, .2, 1);
+        }
+
+
+        .goal-category {
+
+            border-top: 1px solid var(--line);
+
+            padding: 23px 0;
+        }
+
+
+        .goal-category h3 {
+
+            font-size: 1rem;
+
+            margin-bottom: 10px;
+        }
+
+
+        .goal {
+
+            display: flex;
+
+            gap: 12px;
+
+            align-items: flex-start;
+
+            padding: 9px 0;
+        }
+
+
+        .goal input {
+
+            appearance: none;
+
+            width: 19px;
+
+            height: 19px;
+
+            flex: none;
+
+            border: 1.5px solid #aaa296;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            margin-top: 3px;
+
+            position: relative;
+
+            transition: .2s;
+        }
+
+
+        .goal input:checked {
+
+            background: var(--accent);
+
+            border-color: var(--accent);
+        }
+
+
+        .goal input:checked::after {
+
+            content: "✓";
+
+            position: absolute;
+
+            color: white;
+
+            font-size: 13px;
+
+            left: 3px;
+
+            top: -1px;
+        }
+
+
+        .goal label {
+
+            color: #565b55;
+
+            cursor: pointer;
+
+            font-size: .9rem;
+
+            transition: .2s;
+        }
+
+
+        .goal input:checked+label {
+
+            color: #9a958c;
+
+            text-decoration: line-through;
+        }
+
+
+        .reset-button {
+
+            margin-top: 14px;
+
+            border: 1px solid var(--line);
+
+            background: transparent;
+
+            color: var(--muted);
+
+            border-radius: 999px;
+
+            padding: 8px 13px;
+
+            cursor: pointer;
+
+            font-size: .76rem;
+        }
+
+
+        /* =========================
+   NOTES
+========================= */
+
+        .workspace {
+
+            display: grid;
+
+            grid-template-columns: .7fr 1.3fr;
+
+            gap: 20px;
+        }
+
+
+        .workspace-card {
+
+            background: var(--card);
+
+            border: 1px solid var(--line);
+
+            border-radius: var(--radius);
+
+            padding: 28px;
+        }
+
+
+        .workspace-card p {
+
+            color: var(--muted);
+
+            font-size: .9rem;
+        }
+
+
+        #personal-notes {
+
+            width: 100%;
+
+            min-height: 260px;
+
+            border: 0;
+
+            outline: 0;
+
+            resize: vertical;
+
+            background: transparent;
+
+            color: var(--ink);
+
+            font-size: 1rem;
+
+            line-height: 1.8;
+        }
+
+
+        #personal-notes::placeholder {
+            color: #a49e94;
+        }
+
+
+        .save-message {
+
+            color: var(--green) !important;
+
+            opacity: 0;
+
+            transition: .2s;
+        }
+
+
+        /* =========================
+   CONTACT
+========================= */
+
+        .contact-box {
+
+            background: var(--green);
+
+            color: white;
+
+            border-radius: 24px;
+
+            padding: 55px;
+
+            display: grid;
+
+            grid-template-columns: 1fr .8fr;
+
+            gap: 50px;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .contact-box::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+
+            height: 300px;
+
+            border: 1px solid rgba(255, 255, 255, .14);
+
+            border-radius: 50%;
+
+            right: -100px;
+
+            top: -120px;
+        }
+
+
+        .contact-box h2 {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(2.4rem, 5vw, 4.5rem);
+
+            line-height: 1;
+
+            margin-bottom: 20px;
+        }
+
+
+        .contact-box p {
+            color: #d4e0d8;
+        }
+
+
+        .contact-links {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .contact-links a {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            border-bottom:
+                1px solid rgba(255, 255, 255, .2);
+
+            padding: 12px 0;
+
+            font-family: "DM Mono", monospace;
+
+            font-size: .78rem;
+        }
+
+
+        .contact-links a:hover {
+            color: #f4b19e;
+        }
+
+
+        /* =========================
+   FOOTER
+========================= */
+
+        footer {
+
+            padding: 35px 0 50px;
+
+            color: #8b8a83;
+
+            font-family: "DM Mono", monospace;
+
+            font-size: .7rem;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+   REVEAL ANIMATION
+========================= */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform: translateY(28px);
+
+            transition:
+                opacity .75s ease,
+                transform .75s ease;
+        }
+
+
+        .reveal.visible {
+
+            opacity: 1;
+
+            transform: none;
+        }
+
+
+        .stagger>* {
+
+            opacity: 0;
+
+            transform: translateY(18px);
+        }
+
+
+        .stagger.visible>* {
+
+            animation:
+                staggerIn .55s forwards;
+        }
+
+
+        .stagger.visible>*:nth-child(2) {
+            animation-delay: .06s;
+        }
+
+        .stagger.visible>*:nth-child(3) {
+            animation-delay: .12s;
+        }
+
+        .stagger.visible>*:nth-child(4) {
+            animation-delay: .18s;
+        }
+
+        .stagger.visible>*:nth-child(5) {
+            animation-delay: .24s;
+        }
+
+        .stagger.visible>*:nth-child(6) {
+            animation-delay: .30s;
+        }
+
+
+        @keyframes staggerIn {
+
+            to {
+
+                opacity: 1;
+
+                transform: none;
+            }
+        }
+
+
+        /* =========================
+   MOBILE
+========================= */
+
+        @media(max-width:850px) {
+
+            .nav-links {
+
+                position: absolute;
+
+                top: 72px;
+
+                left: 0;
+
+                right: 0;
+
+                display: none;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                padding: 20px 22px 25px;
+
+                background: rgba(244, 240, 232, .97);
+
+                border-bottom:
+                    1px solid var(--line);
+            }
+
+
+            .nav-links.open {
+                display: flex;
+            }
+
+
+            .menu {
+                display: block;
+            }
+
+
+            .hero {
+
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+
+                padding-top: 65px;
+            }
+
+
+            .hero-photo-wrap {
+
+                justify-self: start;
+
+                width: min(280px, 85%);
+            }
+
+
+            .interest-grid {
+
+                grid-template-columns: 1fr 1fr;
+            }
+
+
+            .about-grid,
+            .workspace,
+            .contact-box {
+
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media(max-width:600px) {
+
+            .container {
+
+                width:
+                    min(100% - 30px,
+                        var(--max));
+            }
+
+
+            .section {
+                padding: 80px 0;
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    clamp(4rem,
+                        18vw,
+                        6rem);
+            }
+
+
+            .hero-lead {
+                font-size: 1rem;
+            }
+
+
+            .interest-grid,
+            .project-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .contact-box {
+                padding: 32px 25px;
+            }
+
+
+            .photo-note {
+                right: -5px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- SCROLL PROGRESS -->
+
+    <div class="progress-line" id="scroll-progress">
+    </div>
+
+
+    <!-- =========================
+     NAVIGATION
+========================= -->
+
+    <nav>
+
+        <div class="container nav-inner">
+
+            <a href="#top" class="logo">
+                VISHNU<span>.</span>
+            </a>
+
+
+            <button class="menu" id="menu" aria-label="Open navigation">
+
+                ☰
+
+            </button>
+
+
+            <ul class="nav-links" id="nav-links">
+
+                <li>
+                    <a href="#about">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#projects">
+                        Work
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#roadmap">
+                        Roadmap
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#goals">
+                        Goals
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#notes">
+                        Workspace
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#contact">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+    <main id="top">
+
+
+        <!-- =========================
+     HERO
+========================= -->
+
+        <section class="container hero">
+
+
+            <div class="hero-copy reveal">
+
+                <div class="hero-kicker">
+
+                    <span class="status-dot"></span>
+
+                    currently learning & building
+
+                </div>
+
+
+                <h1>
+
+                    Vishnu
+
+                    <br>
+
+                    <span>Tiwari</span>
+
+                </h1>
+
+
+                <p class="hero-lead">
+
+                    I like figuring out how things work, making things
+                    from scratch, and seeing how far I can take an idea
+                    once I stop just thinking about it.
+
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <a href="#projects" class="btn btn-primary">
+
+                        See what I'm building ↗
+
+                    </a>
+
+
+                    <a href="#goals" class="btn btn-ghost">
+
+                        My current goals
+
+                    </a>
+
+                </div>
+
+
+                <div class="social-row">
+
+                    <a href="https://github.com/Vt858228-sudo" target="_blank" rel="noopener">
+
+                        GitHub ↗
+
+                    </a>
+
+
+                    <a href="https://www.linkedin.com/in/vishnu-tiwari-339a71415/" target="_blank" rel="noopener">
+
+                        LinkedIn ↗
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROFILE -->
+
+            <div class="hero-photo-wrap reveal">
+
+                <div class="photo-frame">
+
+                    <img src="images/vishnu.jpg" alt="Vishnu Tiwari">
+
+                </div>
+
+
+                <div class="photo-note">
+
+                    still figuring it out ✦
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================
+     MARQUEE
+========================= -->
+
+        <div class="marquee" aria-hidden="true">
+
+            <div class="marquee-track">
+
+                <span>CODE</span>
+                <span>✦</span>
+
+                <span>MATHEMATICS</span>
+                <span>✦</span>
+
+                <span>ROBOTICS</span>
+                <span>✦</span>
+
+                <span>AI</span>
+                <span>✦</span>
+
+                <span>BUILD</span>
+                <span>✦</span>
+
+
+                <span>CODE</span>
+                <span>✦</span>
+
+                <span>MATHEMATICS</span>
+                <span>✦</span>
+
+                <span>ROBOTICS</span>
+                <span>✦</span>
+
+                <span>AI</span>
+                <span>✦</span>
+
+                <span>BUILD</span>
+                <span>✦</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+     ABOUT
+========================= -->
+
+        <section id="about" class="section">
+
+            <div class="container">
+
+
+                <p class="eyebrow reveal">
+
+                    01 — who I am
+
+                </p>
+
+
+                <h2 class="section-title reveal">
+
+                    Curious first.
+
+                    <br>
+
+                    <em>Builder second.</em>
+
+                </h2>
+
+
+                <div class="about-grid">
+
+
+                    <div class="about-copy reveal">
+
+                        <p>
+
+                            I'm <strong>Vishnu Tiwari</strong>, a student who is
+                            trying to become genuinely good at making things
+                            with technology.
+
+                        </p>
+
+
+                        <p>
+
+                            Right now that means learning programming,
+                            mathematics, web development, AI/ML and robotics —
+                            not because I want to collect skills, but because I
+                            want enough understanding to turn ideas into real projects.
+
+                        </p>
+
+
+                        <p>
+
+                            I learn best when there is something concrete to build.
+                            This website is part portfolio, part notebook, and part
+                            reminder of where I'm trying to go.
+
+                        </p>
+
+                    </div>
+
+
+                    <aside class="note-card reveal">
+
+                        <h3>
+
+                            Things that keep me moving
+
+                        </h3>
+
+
+                        <ul class="note-list">
+
+
+                            <li>
+
+                                <span>✦</span>
+
+                                Curiosity about how things actually work
+
+                            </li>
+
+
+                            <li>
+
+                                <span>✦</span>
+
+                                Building instead of only watching tutorials
+
+                            </li>
+
+
+                            <li>
+
+                                <span>✦</span>
+
+                                Mathematics for understanding, not just exams
+
+                            </li>
+
+
+                            <li>
+
+                                <span>✦</span>
+
+                                AI, robotics and the space between software + hardware
+
+                            </li>
+
+
+                            <li>
+
+                                <span>✦</span>
+
+                                The idea of eventually building something much bigger
+
+                            </li>
+
+
+                        </ul>
+
+                    </aside>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+     VISION
+========================= -->
+
+        <section class="section vision">
+
+            <div class="container">
+
+
+                <p class="eyebrow reveal">
+
+                    02 — direction
+
+                </p>
+
+
+                <h2 class="section-title reveal">
+
+                    I don't have the whole map.
+
+                    <br>
+
+                    <em>That's the fun part.</em>
+
+                </h2>
+
+
+                <div class="vision-box reveal">
+
+
+                    <p>
+
+                        My long-term aim is to become someone who can move
+                        comfortably between mathematics, software, AI, robotics
+                        and engineering.
+
+                        I want to keep increasing the difficulty of the problems
+                        I can solve and eventually work on ideas that have a real
+                        effect outside my laptop.
+
+                    </p>
+
+
+                    <div class="quote">
+
+                        “Learn enough to build.
+                        Build enough to discover what to learn next.”
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+     INTERESTS
+========================= -->
+
+        <section class="section">
+
+            <div class="container">
+
+
+                <p class="eyebrow reveal">
+
+                    03 — rabbit holes
+
+                </p>
+
+
+                <h2 class="section-title reveal">
+
+                    Things I'm <em>exploring</em>
+
+                </h2>
+
+
+                <div class="interest-grid stagger reveal">
+
+
+                    <article class="interest-card">
+
+                        <div class="interest-icon">
+                            ⌘
+                        </div>
+
+                        <h3>
+                            Software
+                        </h3>
+
+                        <p>
+                            Learning to turn an idea into something people can actually use.
+                        </p>
+
+                    </article>
+
+
+                    <article class="interest-card">
+
+                        <div class="interest-icon">
+                            ◈
+                        </div>
+
+                        <h3>
+                            AI & ML
+                        </h3>
+
+                        <p>
+                            Understanding the ideas and mathematics behind machine learning.
+                        </p>
+
+                    </article>
+
+
+                    <article class="interest-card">
+
+                        <div class="interest-icon">
+                            ⚙
+                        </div>
+
+                        <h3>
+                            Robotics
+                        </h3>
+
+                        <p>
+                            Where code leaves the screen and starts interacting with the physical world.
+                        </p>
+
+                    </article>
+
+
+                    <article class="interest-card">
+
+                        <div class="interest-icon">
+                            ∑
+                        </div>
+
+                        <h3>
+                            Mathematics
+                        </h3>
+
+                        <p>
+                            Learning it because I want to understand it, especially where it connects to CS.
+                        </p>
+
+                    </article>
+
+
+                    <article class="interest-card">
+
+                        <div class="interest-icon">
+                            ⌂
+                        </div>
+
+                        <h3>
+                            Web Development
+                        </h3>
+
+                        <p>
+                            Making useful digital experiences and learning how the web actually works.
+                        </p>
+
+                    </article>
+
+
+                    <article class="interest-card">
+
+                        <div class="interest-icon">
+                            ↗
+                        </div>
+
+                        <h3>
+                            Big Ideas
+                        </h3>
+
+                        <p>
+                            Keeping a running list of problems that might be worth trying to solve.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+     PROJECTS
+========================= -->
+
+        <section id="projects" class="section">
+
+            <div class="container">
+
+
+                <p class="eyebrow reveal">
+
+                    04 — things I've started
+
+                </p>
+
+
+                <h2 class="section-title reveal">
+
+                    Work, experiments &
+
+                    <em>unfinished ideas.</em>
+
+                </h2>
+
+
+                <div class="project-grid stagger reveal">
+
+
+                    <!-- PROJECT 1 -->
+
+                    <article class="project-card tilt">
+
+
+                        <img src="images/jyoti-store.png" alt="Jyoti Machinery Store website" class="project-image">
+
+
+                        <div class="project-body">
+
+
+                            <h3>
+                                Jyoti Machinery Store
+                            </h3>
+
+
+                            <p>
+
+                                A real-world website project for a family business —
+                                turning an established offline business into a cleaner
+                                digital experience.
+
+                            </p>
+
+
+                            <div class="project-footer">
+
+
+                                <div class="tags">
+
+                                    <span class="tag">
+                                        HTML
+                                    </span>
+
+                                    <span class="tag">
+                                        CSS
+                                    </span>
+
+                                    <span class="tag">
+                                        JavaScript
+                                    </span>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PROJECT 2 -->
+
+                    <article class="project-card tilt">
+
+
+                        <img src="images/java-project.png" alt="Java programming project" class="project-image">
+
+
+                        <div class="project-body">
+
+
+                            <h3>
+                                Java & Problem Solving
+                            </h3>
+
+
+                            <p>
+
+                                A collection of programming exercises and small
+                                experiments while building stronger fundamentals
+                                in Java and problem solving.
+
+                            </p>
+
+
+                            <div class="project-footer">
+
+                                <div class="tags">
+
+                                    <span class="tag">
+                                        Java
+                                    </span>
+
+                                    <span class="tag">
+                                        DSA
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PROJECT 3 -->
+
+                    <article class="project-card tilt">
+
+
+                        <img src="images/ai-project.png" alt="AI and machine learning experiments"
+                            class="project-image">
+
+
+                        <div class="project-body">
+
+
+                            <h3>
+                                AI / ML Experiments
+                            </h3>
+
+
+                            <p>
+
+                                A space for future Python, machine learning and
+                                AI projects as I move from learning concepts to
+                                actually building with them.
+
+                            </p>
+
+
+                            <div class="project-footer">
+
+                                <div class="tags">
+
+                                    <span class="tag">
+                                        Python
+                                    </span>
+
+                                    <span class="tag">
+                                        AI
+                                    </span>
+
+                                    <span class="tag">
+                                        ML
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PROJECT 4 -->
+
+                    <!-- PROJECT 4 -->
+
+                    <article class="project-card tilt">
+
+                        <img src="images/robotics-coming-later-minimal.png" alt="Robotics — Coming Later"
+                            class="project-image">
+
+                        <div class="project-body">
+
+                            <h3>
+                                Robotics — coming later
+                            </h3>
+
+                            <p>
+                                An eventual project combining software, electronics
+                                and robotics.
+
+                                The blank space is intentional —
+                                the project hasn't been invented yet.
+                            </p>
+
+                            <div class="project-footer">
+
+                                <div class="tags">
+
+                                    <span class="tag">
+                                        Robotics
+                                    </span>
+
+                                    <span class="tag">
+                                        Hardware
+                                    </span>
+
+                                    <span class="tag">
+                                        AI
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+     SKILLS
+========================= -->
+
+        <section class="section">
+
+            <div class="container">
+
+
+                <p class="eyebrow reveal">
+
+                    05 — current toolkit
+
+                </p>
+
+
+                <h2 class="section-title reveal">
+
+                    Things I'm <em>learning.</em>
+
+                </h2>
+
+
+                <div class="skills-wrap stagger reveal">
+
+
+                    <span class="skill">
+                        HTML
+                    </span>
+
+                    <span class="skill">
+                        CSS
+                    </span>
+
+                    <span class="skill">
+                        JavaScript
+                    </span>
+
+                    <span class="skill">
+                        Java
+                    </span>
+
+                    <span class="skill">
+                        Python
+                    </span>
+
+                    <span class="skill">
+                        C++
+                    </span>
+
+                    <span class="skill">
+                        Git
+                    </span>
+
+                    <span class="skill">
+                        GitHub
+                    </span>
+
+                    <span class="skill">
+                        DSA
+                    </span>
+
+                    <span class="skill">
+                        Algorithms
+                    </span>
+
+                    <span class="skill">
+                        Mathematics
+                    </span>
+
+                    <span class="skill">
+                        Machine Learning
+                    </span>
+
+                    <span class="skill">
+                        AI
+                    </span>
+
+                    <span class="skill">
+                        Robotics
+                    </span>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+     ROADMAP
+========================= -->
+
+        <section id="roadmap" class="section">
+
+            <div class="container">
+
+
+                <p class="eyebrow reveal">
+
+                    06 — the direction
+
+                </p>
+
+
+                <h2 class="section-title reveal">
+
+                    My roadmap is allowed to
+
+                    <em>change.</em>
+
+                </h2>
+
+
+                <div class="roadmap reveal">
+
+
+                    <div class="roadmap-item">
+
+                        <span class="roadmap-dot"></span>
+
+                        <h3>
+                            Get the fundamentals right
+                        </h3>
+
+                        <p>
+
+                            Programming, mathematics, computer science fundamentals,
+                            problem solving and communication.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="roadmap-item">
+
+                        <span class="roadmap-dot"></span>
+
+                        <h3>
+                            Build real projects
+                        </h3>
+
+                        <p>
+
+                            Move beyond tutorials and make websites, applications,
+                            automations and experiments.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="roadmap-item">
+
+                        <span class="roadmap-dot"></span>
+
+                        <h3>
+                            Go deeper into AI + robotics
+                        </h3>
+
+                        <p>
+
+                            Strengthen Python, ML, mathematics, electronics and
+                            the connection between software and hardware.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="roadmap-item">
+
+                        <span class="roadmap-dot"></span>
+
+                        <h3>
+                            Build a serious body of work
+                        </h3>
+
+                        <p>
+
+                            Publish code, document projects, contribute where
+                            possible and create things worth showing.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="roadmap-item">
+
+                        <span class="roadmap-dot"></span>
+
+                        <h3>
+                            Explore opportunities abroad
+                        </h3>
+
+                        <p>
+
+                            Keep researching universities, programs, scholarships
+                            and international opportunities that fit my direction.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="roadmap-item">
+
+                        <span class="roadmap-dot"></span>
+
+                        <h3>
+                            Attempt harder problems
+                        </h3>
+
+                        <p>
+
+                            Use everything learned so far to work on ambitious
+                            technology projects that solve real problems.
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+     GOALS
+========================= -->
+
+        <section id="goals" class="section">
+
+            <div class="container">
+
+
+                <p class="eyebrow reveal">
+
+                    07 — personal dashboard
+
+                </p>
+
+
+                <h2 class="section-title reveal">
+
+                    Keep score of the <em>work.</em>
+
+                </h2>
+
+
+                <div class="goal-dashboard reveal">
+
+
+                    <div class="progress-top">
+
+                        <strong>
+                            Overall progress
+                        </strong>
+
+                        <span class="progress-number" id="progress-text">
+
+                            0%
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <div id="progress-fill"></div>
+
+                    </div>
+
+
+                    <!-- PROGRAMMING -->
+
+                    <div class="goal-category">
+
+                        <h3>
+                            ⌘ Programming & computer science
+                        </h3>
+
+
+                        <div class="goal">
+
+                            <input id="goal1" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal1">
+                                Become comfortable with HTML & CSS
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal2" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal2">
+                                Learn JavaScript properly
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal3" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal3">
+                                Learn Python from the ground up
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal4" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal4">
+                                Become strong at Java
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal5" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal5">
+                                Learn Data Structures & Algorithms
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal6" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal6">
+                                Build and publish serious software projects
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MATHEMATICS -->
+
+                    <div class="goal-category">
+
+                        <h3>
+                            ∑ Mathematics
+                        </h3>
+
+
+                        <div class="goal">
+
+                            <input id="goal7" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal7">
+                                Study mathematics for curiosity, not only exams
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal8" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal8">
+                                Strengthen mathematical problem solving
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal9" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal9">
+                                Learn mathematics useful for AI and computer science
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- AI -->
+
+                    <div class="goal-category">
+
+                        <h3>
+                            ◈ AI & machine learning
+                        </h3>
+
+
+                        <div class="goal">
+
+                            <input id="goal10" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal10">
+                                Learn Python for AI / ML
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal11" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal11">
+                                Learn the fundamentals of machine learning
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal12" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal12">
+                                Build my first meaningful AI project
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal13" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal13">
+                                Understand the mathematics behind ML
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ROBOTICS -->
+
+                    <div class="goal-category">
+
+                        <h3>
+                            ⚙ Robotics
+                        </h3>
+
+
+                        <div class="goal">
+
+                            <input id="goal14" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal14">
+                                Learn robotics fundamentals
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal15" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal15">
+                                Learn basic electronics and hardware
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal16" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal16">
+                                Build a robotics project
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal17" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal17">
+                                Combine robotics with AI
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BUILDING -->
+
+                    <div class="goal-category">
+
+                        <h3>
+                            ↗ Building
+                        </h3>
+
+
+                        <div class="goal">
+
+                            <input id="goal18" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal18">
+                                Complete the Jyoti Machinery Store website
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal19" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal19">
+                                Build a project I'm genuinely proud of
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal20" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal20">
+                                Put my projects on GitHub
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal21" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal21">
+                                Build something that solves a real-world problem
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal22" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal22">
+                                Build something involving AI + hardware
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EDUCATION -->
+
+                    <div class="goal-category">
+
+                        <h3>
+                            ◎ Education & future
+                        </h3>
+
+
+                        <div class="goal">
+
+                            <input id="goal23" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal23">
+                                Research strong international universities
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal24" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal24">
+                                Explore study opportunities in Germany
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal25" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal25">
+                                Explore universities such as TUM, RWTH Aachen and ETH
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal26" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal26">
+                                Build an academic + project profile for future applications
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal27" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal27">
+                                Look for scholarships and international opportunities
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PERSONAL -->
+
+                    <div class="goal-category">
+
+                        <h3>
+                            ✦ Personal growth
+                        </h3>
+
+
+                        <div class="goal">
+
+                            <input id="goal28" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal28">
+                                Build a consistent learning habit
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal29" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal29">
+                                Maintain a learning journal
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal30" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal30">
+                                Improve communication and public speaking
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal31" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal31">
+                                Learn German
+                            </label>
+
+                        </div>
+
+
+                        <div class="goal">
+
+                            <input id="goal32" type="checkbox" class="goal-checkbox">
+
+                            <label for="goal32">
+                                Keep experimenting with new technologies
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <button class="reset-button" id="reset-goals">
+
+                        Reset goals
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+     NOTES
+========================= -->
+
+        <section id="notes" class="section">
+
+            <div class="container">
+
+
+                <p class="eyebrow reveal">
+
+                    08 — private workspace
+
+                </p>
+
+
+                <h2 class="section-title reveal">
+
+                    Ideas before they <em>disappear.</em>
+
+                </h2>
+
+
+                <div class="workspace">
+
+
+                    <div class="workspace-card reveal">
+
+
+                        <h3 style="
+font-family:'Playfair Display',serif;
+font-size:1.7rem;
+margin-bottom:12px
+">
+
+                            A little corner for future me.
+
+                        </h3>
+
+
+                        <p>
+
+                            Write project ideas, things you learned, questions,
+                            books to read, or what you want to work on next.
+
+                            It saves automatically in this browser.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="workspace-card reveal">
+
+
+                        <textarea id="personal-notes" placeholder="Start writing..."></textarea>
+
+
+                        <p class="save-message" id="save-message">
+
+                            ✓ saved locally
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+     CONTACT
+========================= -->
+
+        <section id="contact" class="section">
+
+            <div class="container">
+
+
+                <div class="contact-box reveal">
+
+
+                    <div>
+
+
+                        <p class="eyebrow">
+
+                            09 — say hello
+
+                        </p>
+
+
+                        <h2>
+
+                            Let's build
+
+                            <br>
+
+                            something interesting.
+
+                        </h2>
+
+
+                        <p>
+
+                            I'm still early in the journey, which means there
+                            is a lot left to learn and a lot left to try.
+
+                        </p>
+
+
+                    </div>
+
+
+                    <div class="contact-links">
+
+
+                        <a href="https://github.com/Vt858228-sudo" target="_blank" rel="noopener">
+
+                            <span>
+                                GitHub
+                            </span>
+
+                            <span>
+                                ↗
+                            </span>
+
+                        </a>
+
+
+                        <a href="https://www.linkedin.com/in/vishnu-tiwari-339a71415/" target="_blank" rel="noopener">
+
+                            <span>
+                                LinkedIn
+                            </span>
+
+                            <span>
+                                ↗
+                            </span>
+
+                        </a>
+
+
+                        <!-- CHANGE THIS EMAIL -->
+
+                        <a href="mailto:your-email@example.com">
+
+                            <span>
+                                Email
+                            </span>
+
+                            <span>
+                                ↗
+                            </span>
+
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+     FOOTER
+========================= -->
+
+    <footer>
+
+        <div class="container">
+
+            © 2026 Vishnu Tiwari · built while figuring things out.
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        /* =========================================================
+           MOBILE NAVIGATION
+        ========================================================= */
+
+        const menu =
+            document.getElementById("menu");
+
+        const navLinks =
+            document.getElementById("nav-links");
+
+
+        menu.addEventListener(
+            "click",
+            () => {
+
+                navLinks.classList.toggle("open");
+
+                menu.textContent =
+                    navLinks.classList.contains("open")
+                        ? "×"
+                        : "☰";
+
+            }
+        );
+
+
+        document
+            .querySelectorAll(".nav-links a")
+            .forEach(link => {
+
+                link.addEventListener(
+                    "click",
+                    () => {
+
+                        navLinks.classList.remove("open");
+
+                        menu.textContent = "☰";
+
+                    }
+                );
+
+            });
+
+
+        /* =========================================================
+           SCROLL PROGRESS
+        ========================================================= */
+
+        const scrollProgress =
+            document.getElementById(
+                "scroll-progress"
+            );
+
+
+        function updateScrollProgress() {
+
+            const scrollTop =
+                window.scrollY;
+
+
+            const height =
+                document.documentElement.scrollHeight
+                -
+                window.innerHeight;
+
+
+            scrollProgress.style.width =
+                height > 0
+                    ? `${(scrollTop / height) * 100}%`
+                    : "0%";
+
+        }
+
+
+        window.addEventListener(
+            "scroll",
+            updateScrollProgress,
+            { passive: true }
+        );
+
+
+        updateScrollProgress();
+
+
+        /* =========================================================
+           SCROLL REVEAL
+        ========================================================= */
+
+        const revealObserver =
+            new IntersectionObserver(
+
+                (entries) => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target
+                                .classList
+                                .add("visible");
+
+                            revealObserver
+                                .unobserve(entry.target);
+
+                        }
+
+                    });
+
+                },
+
+                {
+                    threshold: .12
+                }
+
+            );
+
+
+        document
+            .querySelectorAll(".reveal")
+            .forEach(element => {
+
+                revealObserver.observe(element);
+
+            });
+
+
+        /* =========================================================
+           ACTIVE NAVIGATION
+        ========================================================= */
+
+        const sections =
+            document.querySelectorAll(
+                "section[id]"
+            );
+
+
+        const navAnchors =
+            document.querySelectorAll(
+                ".nav-links a"
+            );
+
+
+        const sectionObserver =
+            new IntersectionObserver(
+
+                (entries) => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            navAnchors.forEach(anchor => {
+
+                                anchor.classList.toggle(
+
+                                    "active",
+
+                                    anchor.getAttribute("href")
+                                    ===
+                                    `#${entry.target.id}`
+
+                                );
+
+                            });
+
+                        }
+
+                    });
+
+                },
+
+                {
+                    rootMargin:
+                        "-30% 0px -60% 0px"
+                }
+
+            );
+
+
+        sections.forEach(section => {
+
+            sectionObserver.observe(section);
+
+        });
+
+
+        /* =========================================================
+           GOAL TRACKER
+        ========================================================= */
+
+        const checkboxes =
+            document.querySelectorAll(
+                ".goal-checkbox"
+            );
+
+
+        const progressFill =
+            document.getElementById(
+                "progress-fill"
+            );
+
+
+        const progressText =
+            document.getElementById(
+                "progress-text"
+            );
+
+
+        const GOALS_KEY =
+            "vishnu-portfolio-goals-v2";
+
+
+        function updateGoals(save = true) {
+
+            let completed = 0;
+
+
+            checkboxes.forEach(box => {
+
+                if (box.checked) {
+
+                    completed++;
+
+                }
+
+            });
+
+
+            const percentage =
+                Math.round(
+                    (completed / checkboxes.length)
+                    * 100
+                );
+
+
+            progressFill.style.width =
+                `${percentage}%`;
+
+
+            progressText.textContent =
+                `${percentage}%`;
+
+
+            if (save) {
+
+                localStorage.setItem(
+
+                    GOALS_KEY,
+
+                    JSON.stringify(
+
+                        [...checkboxes]
+                            .map(box => box.checked)
+
+                    )
+
+                );
+
+            }
+
+        }
+
+
+        const savedGoals =
+            JSON.parse(
+
+                localStorage.getItem(GOALS_KEY)
+                ||
+                "null"
+
+            );
+
+
+        if (Array.isArray(savedGoals)) {
+
+            checkboxes.forEach(
+                (box, index) => {
+
+                    box.checked =
+                        Boolean(savedGoals[index]);
+
+                }
+            );
+
+        }
+
+
+        checkboxes.forEach(box => {
+
+            box.addEventListener(
+                "change",
+                () => updateGoals(true)
+            );
+
+        });
+
+
+        updateGoals(false);
+
+
+        /* =========================================================
+           RESET GOALS
+        ========================================================= */
+
+        document
+            .getElementById("reset-goals")
+            .addEventListener(
+                "click",
+                () => {
+
+                    if (
+                        !confirm(
+                            "Reset all your goal progress?"
+                        )
+                    ) {
+                        return;
+                    }
+
+
+                    checkboxes.forEach(box => {
+
+                        box.checked = false;
+
+                    });
+
+
+                    localStorage.removeItem(
+                        GOALS_KEY
+                    );
+
+
+                    updateGoals(false);
+
+                }
+            );
+
+
+        /* =========================================================
+           PERSONAL NOTES
+        ========================================================= */
+
+        const notes =
+            document.getElementById(
+                "personal-notes"
+            );
+
+
+        const saveMessage =
+            document.getElementById(
+                "save-message"
+            );
+
+
+        const NOTES_KEY =
+            "vishnu-portfolio-notes-v2";
+
+
+        notes.value =
+            localStorage.getItem(
+                NOTES_KEY
+            )
+            ||
+            "";
+
+
+        let saveTimer;
+
+
+        notes.addEventListener(
+            "input",
+            () => {
+
+                localStorage.setItem(
+                    NOTES_KEY,
+                    notes.value
+                );
+
+
+                saveMessage.style.opacity =
+                    "1";
+
+
+                clearTimeout(saveTimer);
+
+
+                saveTimer =
+                    setTimeout(
+                        () => {
+
+                            saveMessage.style.opacity =
+                                "0";
+
+                        },
+                        1100
+                    );
+
+            }
+        );
+
+
+        /* =========================================================
+           PROJECT CARD 3D EFFECT
+        ========================================================= */
+
+        if (
+            window.matchMedia(
+                "(pointer:fine)"
+            ).matches
+        ) {
+
+            document
+                .querySelectorAll(".tilt")
+                .forEach(card => {
+
+
+                    card.addEventListener(
+                        "mousemove",
+                        event => {
+
+                            const rect =
+                                card.getBoundingClientRect();
+
+
+                            const x =
+                                event.clientX
+                                -
+                                rect.left;
+
+
+                            const y =
+                                event.clientY
+                                -
+                                rect.top;
+
+
+                            const rotateY =
+                                (
+                                    (x / rect.width)
+                                    - .5
+                                )
+                                * 4;
+
+
+                            const rotateX =
+                                (
+                                    (y / rect.height)
+                                    - .5
+                                )
+                                * -4;
+
+
+                            card.style.transform =
+                                `
+                    perspective(900px)
+                    rotateX(${rotateX}deg)
+                    rotateY(${rotateY}deg)
+                    translateY(-5px)
+                    `;
+
+                        }
+                    );
+
+
+                    card.addEventListener(
+                        "mouseleave",
+                        () => {
+
+                            card.style.transform = "";
+
+                        }
+                    );
+
+                });
+
+        }
+
+
+        /* =========================================================
+           FOOTER YEAR
+        ========================================================= */
+
+        document
+            .querySelector("footer")
+            .innerHTML =
+
+            `<div class="container">
+© ${new Date().getFullYear()}
+Vishnu Tiwari · built while figuring things out.
+</div>`;
+
+    </script>
+
+</body>
+
+</html>
